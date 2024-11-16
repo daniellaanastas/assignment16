@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // Start is called before the first frame update
     void Start()
     {
-        Player player1 = new Player();
-        Player player2 = new Player();
-        player1.InitializePlayer("Daniella", 50);
-        player2.InitializePlayer("Maria", 75);
-        player1.Heal(10);
-        player2.Heal(true);
-        Player.ShowPlayerCount();
+        Player player = new Player("Subhi", 90);
+        Enemy enemy = new Enemy("Zarifeh", 80);
+
+        Debug.Log($"Player: {player.GetName()}, Health: {player.GetHealth()}");
+        Debug.Log($"Enemy: {enemy.GetName()}, Health: {enemy.GetHealth()}");
+
+        player.Heal(10);
+        enemy.Attack(player, 20);
     }
 
-    
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

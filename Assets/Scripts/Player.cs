@@ -1,40 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player
+public class Player : Character
 {
-   public string playerName;
-   public int health;
+    public Player(string name, int health) : base(name, health) { }
 
-   private static int playerCount = 0;
-
-   public void InitializePlayer(string name, int initialHealth)
-   {
-    playerName = name;
-    health = initialHealth;
-    playerCount++;
-
-   }
-
-   public void Heal(int amount)
-   {
-      health += amount;
-      Debug.Log(health);
-   }
-
-   public void Heal(bool fullRestore)
-   {
-    if (fullRestore)
-        {
-            health = 100; 
-            
-        }
-   }
-
-   public static void ShowPlayerCount()
+    public void Heal(int amount)
     {
-     Debug.Log(playerCount);
+        int currentHealth = GetHealth(); 
+        currentHealth += amount;
+        SetHealth(currentHealth);
+        Debug.Log($"{GetName()} healed by {amount}. Current health: {GetHealth()}");
     }
+
 }
